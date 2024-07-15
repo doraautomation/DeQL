@@ -137,7 +137,7 @@ def process_txn(current):
     chunk_size = max(1, len(current) // num_threads)
     chunks = [current[i:i + chunk_size] for i in range(0, len(current), chunk_size)]
 
-    for i in range(min(num_threads, len(chunks))):  # Ensure i is within the valid range
+    for i in range(min(num_threads, len(chunks))):  
         thread = threading.Thread(target=lambda i=i: results.append(process_chunk(i, chunks[i])), name=f"Thread-{i}")
         threads.append(thread)
         thread.start()
@@ -185,9 +185,9 @@ def process_element(received_txn):
             CODEQL_PATH,
             "database",
             "create",
-            db_path,  # This is the path where the database will be created
+            db_path, 
             "--language=python",
-            "--source-root",  # This flag is needed before specifying the source code directory
+            "--source-root",  
             code_path
         ]
 
