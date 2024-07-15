@@ -34,10 +34,9 @@ class SimpleBank:
         return new_database_path
     
     def run_query(self, database_path, query_output):
-        CODEQL_PATH = r"codeql\codeql.exe"  # Adjust this to your correct CodeQL path
+        CODEQL_PATH = r"./codeql"  # Adjust this to your correct CodeQL path
         QUERY_FILE = r"codeql\codeql-main\codeql-main\python\ql\examples\snippets\syntax.ql"  # Adjust path as needed
         
-        # Use `subprocess.run` with the `--format=csv` option
         query_cmd = [
             CODEQL_PATH,
             "database",
@@ -45,7 +44,7 @@ class SimpleBank:
             database_path,
             QUERY_FILE,
             "--format=csv",
-            f"--output={query_output}"  # Ensure output file ends in `.csv`
+            f"--output={query_output}" 
         ]
 
         # Run the command with error handling
