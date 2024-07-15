@@ -18,11 +18,11 @@ trans_data = ""
 
 def generate_hash(data):
     hash_object = hashlib.sha256()
-    hash_object.update(str(data).encode('utf-8'))  # Ensuring the input is in the correct format
+    hash_object.update(str(data).encode('utf-8'))  
     return hash_object.hexdigest()
 
 def Generatehashes(data):
-    with open('hashed_data.txt', 'w') as file:  # Open a text file for writing
+    with open('hashed_data.txt', 'w') as file: 
         for item in data:
             hash_value = generate_hash(item)
             file.write(f"{item},{hash_value}\n")
@@ -33,14 +33,13 @@ def process_data(data):
     for i, sub_array in enumerate(sub_arrays, start=1):
         file_name = f"{i}.txt"
         with open(file_name, "w") as file:
-            # Transform the sub-array into a comma-separated string and save
             trans_data = ",".join(map(str, sub_array))
             file.write(trans_data)
             
 def call_consensus(data):
     block_size = len(data)
     block_start_time = time.time()
-    subprocess.run(["mpiexec", "-host", "au-prd-cnode001,au-prd-cnode002,au-prd-cnode003,au-prd-cnode004,au-prd-cnode005", "-n", str(processor_count), "python", "2PQC_sharding.py", trans_data])
+    subprocess.run(["mpiexec", "-host", "au-prd-cnode001,au-prd-cnode002,au-prd-cnode003,au-prd-cnode004,au-prd-cnode005", "-n", str(processor_count), "python", "2PQC_sharding.py", trans_data]) #HPC nodes
     block_end_time = time.time()
     total_block_execution_time = block_end_time - block_start_time
     block_result = f"Total Block execution time: {total_block_execution_time} seconds"
