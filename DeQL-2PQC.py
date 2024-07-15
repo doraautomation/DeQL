@@ -139,8 +139,6 @@ def process_array(array, output_path, comm, rank, size):
     except Exception as e:
         print("Error:", e)
         print(f"Failed to create CodeQL database {db_name}.") 
-            
-    
 
 if __name__ == '__main__':
     comm = MPI.COMM_WORLD
