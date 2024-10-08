@@ -9,7 +9,7 @@ import hashlib
 dependency_graph = nx.DiGraph()
 fully_independent_transactions = []
 Track = []
-processor_count = 1
+processor_count = 5
 
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
