@@ -21,4 +21,4 @@ conda activate <your_conda_env>  # Replace with your actual environment name
 cd /scratch/<your_username>/<project_folder>
 
 # Run Python program
-python hello.py
+python 'Parallel Commit Manager.py'
