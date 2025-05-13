@@ -39,7 +39,7 @@ def process_data(data):
 def call_consensus(data):
     block_size = len(data)
     block_start_time = time.time()
-    subprocess.run(["mpiexec", "-host", "au-prd-cnode001,au-prd-cnode002,au-prd-cnode003,au-prd-cnode004,au-prd-cnode005", "-n", str(processor_count), "python", "2PQC_sharding.py", trans_data]) #HPC nodes
+    subprocess.run(["mpiexec", "-host", "node001,node002,node003,node004,node005", "-n", str(processor_count), "python", "DeQL-2PQC.py", trans_data]) #HPC nodes
     block_end_time = time.time()
     total_block_execution_time = block_end_time - block_start_time
     block_result = f"Total Block execution time: {total_block_execution_time} seconds"
